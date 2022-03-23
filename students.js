@@ -12,12 +12,31 @@ function findStudent () {
 form.addEventListener("keyup", function() {
 
     let foundStudent = findStudent();
+    let wrapper = document.getElementById("results-container");
+    wrapper.innerHTML = "";
     createHTML(foundStudent);
 
+    if (form.value == 0) {
+        wrapper.innerHTML = "";
+    }
+    
 });
 
+function renderStudent (student) {
+    let wrapper = document.getElementById("results-container");
+    let div = document.createElement("div");
+    div.classList.add("result"); 
+
+    div.innerHTML = student;
+    wrapper.appendChild(div);
+}
+
 function createHTML (students) {
-    //loop to add html
+        console.log(students);
+   
+        for (let student of students) {
+            renderStudent(student)
+        }
 }
 
 /* 
