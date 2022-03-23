@@ -9,7 +9,16 @@ function findStudent () {
     return student;
 }
 
+form.addEventListener("keyup", function() {
 
+    let foundStudent = findStudent();
+    createHTML(foundStudent);
+
+});
+
+function createHTML (students) {
+    //loop to add html
+}
 
 /* 
 
