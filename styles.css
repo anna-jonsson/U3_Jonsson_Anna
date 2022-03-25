@@ -1,3 +1,11 @@
 :root {
     font-family: 'Courier New', Courier, monospace;
 }
+
+.passed {
+    color: #4CBB17;
+}
+
+.result {
+    font-size: larger;
+}
