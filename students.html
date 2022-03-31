@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Student search</title>
 </head>
+
 <body>
+    <div id="btn-wrapper">
+        <button>
+            <img src="crescent-moon.png" id="moon" /><img src="sun.png" id="sun" />
+        </button>
+    </div>
 
     <div id="search-container">
         <label for="student">Search student:</label>
-        <input type="text" id="student" name="student" placeholder="Enter student's lastname">
+        <input type="text" id="student" name="student" placeholder="Enter student's lastname" />
     </div>
 
-    <div id="results-container">
+    <div id="results-container"></div>
 
-    </div>
-    
     <script src="database.js"></script>
     <script src="students.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
