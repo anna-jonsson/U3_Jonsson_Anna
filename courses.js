@@ -42,6 +42,13 @@ form.addEventListener('keyup', function () {
 
   if (form.value == 0) {
     wrapper.innerHTML = ''
+  } else if (foundCourse.length == 0) {
+    let infoDiv = document.createElement('div');
+    let infoP = document.createElement('p');
+    wrapper.appendChild(infoDiv);
+    infoDiv.appendChild(infoP);
+    infoP.innerText = 'No courses matched your search. Try again!'
+    infoP.classList.add('no-result')
   }
 })
 

@@ -41,7 +41,14 @@ form.addEventListener('keyup', function () {
   createHTML(foundStudent)
 
   if (form.value == 0) {
-    wrapper.innerHTML = ''
+    wrapper.innerHTML = "";
+  } else if (foundStudent.length == 0) {
+    let infoDiv = document.createElement('div');
+    let infoP = document.createElement('p');
+    wrapper.appendChild(infoDiv);
+    infoDiv.appendChild(infoP);
+    infoP.innerText = 'No student matched your search. Try again!'
+    infoP.classList.add('no-result')
   }
 })
 

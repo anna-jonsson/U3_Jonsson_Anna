@@ -128,3 +128,7 @@ button:hover {
   color: #4cbb17;
   font-weight: 300;
 }
+
+.no-result {
+  color: tomato;
+}
