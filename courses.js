@@ -1,9 +1,17 @@
+//Link to Github repository: https://github.com/anna-jonsson/U3_Jonsson_Anna
+
+//Declaring global variable 'form' for input field with id 'course'
+
 let form = document.getElementById('course')
+
+//Filters database of courses on input value (searched course title) and returns object "course"
 
 function findCourse () {
   let course = DATABASE.courses.filter(course =>
     course.title.toLowerCase().includes(form.value.toLowerCase())
   )
+
+  //Sorting all course results in alphabetical order based on their title
 
   course.sort(function (a, b) {
     if (a.title > b.title) {
@@ -20,6 +28,11 @@ function findCourse () {
   return course
 }
 
+//Event listener for when user enters something in our input field ('form'). 
+//If nothing is entered, show nothing (blank page). 
+//If something is entered, call functions createHTML() and findCourse() to identify correct courses based on the
+//search result. 
+
 form.addEventListener('keyup', function () {
   let foundCourse = findCourse()
 
@@ -32,6 +45,10 @@ form.addEventListener('keyup', function () {
   }
 })
 
+//Function to render the courses into HTML, using parameter 'course', which is later replaced with the 'foundCourse' in
+//createHTML() within the event listener above. Other properties rendered are the course's total credit, students who
+//have taken the course, their total passed credit, course responsible, teachers etc. 
+
 function renderCourse (course) {
   let wrapper = document.getElementById('results-container')
   let div = document.createElement('div')
@@ -40,6 +57,8 @@ function renderCourse (course) {
   p.classList.add('result')
   p.innerText = '>> ' + course.title + ' / ' + course.totalCredits + ' credits'
   div.appendChild(p)
+
+  //Course responsible, template for HTML rendering
 
   let foundRep = findCourserep(course)
   let foundTeacher = findTeachers(course)
@@ -62,6 +81,8 @@ function renderCourse (course) {
       ')'
   }
 
+  //Teachers involved in the course, template for HTML rendering
+
   let teacherDiv = document.createElement('div')
   div.appendChild(teacherDiv)
   teacherDiv.innerText = 'Teachers: '
@@ -81,6 +102,8 @@ function renderCourse (course) {
 
   let foundStudent = getStudentById(course)
 
+  //Identifying the course-involved students' array of courses and pushing them into a new array (studentCourses)
+
   let studentCourses = []
 
   for (let student of foundStudent) {
@@ -90,6 +113,8 @@ function renderCourse (course) {
       }
     }
   }
+
+  //Students involved in the course, template for HTML rendering
 
   let studentDiv = document.createElement('div')
   div.appendChild(studentDiv)
@@ -116,6 +141,8 @@ function renderCourse (course) {
   }
 }
 
+//Identify the students involved in the course and push them into a new array (foundStudent)
+
 function getStudentById (course) {
   let foundStudent = []
 
@@ -130,6 +157,8 @@ function getStudentById (course) {
   return foundStudent
 }
 
+//Identify the course's course responsible and pushing them into a new array (foundRep)
+
 function findCourserep (course) {
   let foundRep = []
 
@@ -141,6 +170,8 @@ function findCourserep (course) {
 
   return foundRep
 }
+
+//Identify the teachers involved in the course and push them into a new array (foundTeacher)
 
 function findTeachers (course) {
   let foundTeacher = []
@@ -155,6 +186,8 @@ function findTeachers (course) {
 
   return foundTeacher
 }
+
+//Function including a loop where each course is rendered into HTML, calling the renderCourse function. 
 
 function createHTML (courses) {
   for (let course of courses) {
